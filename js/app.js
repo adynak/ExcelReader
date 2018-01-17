@@ -1,4 +1,4 @@
-angular.module('app', ['ui.grid'])
+angular.module('app', ['ui.grid','ui.grid.selection'])
 
 
 
@@ -9,7 +9,41 @@ angular.module('app', ['ui.grid'])
       $scope.prompts = txtPrompts;
       $window.document.title = txtPrompts.tabTitle;
 
-      vm.gridOptions = {};
+      function copyToClipboard(text) {
+          if (window.clipboardData && window.clipboardData.setData) {
+              // IE specific code path to prevent textarea being shown while dialog is visible.
+              return clipboardData.setData("Text", text);
+          } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+              var textarea = document.createElement("textarea");
+              textarea.textContent = text;
+              textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
+              document.body.appendChild(textarea);
+              textarea.select();
+              try {
+                  return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+              } catch (ex) {
+                  console.warn("Copy to clipboard failed.", ex);
+                  return false;
+              } finally {
+                  document.body.removeChild(textarea);
+              }
+          }
+      }
+
+      vm.gridOptions = {
+        enableGridMenu: true,
+        enableSorting : false,
+        enableRowSelection: true,
+        enableRowHeaderSelection: false, 
+        multiSelect: false,
+        onRegisterApi: function( gridApi ) {  
+            gridApi.selection.on.rowSelectionChanged($scope,function(row){
+            var column1Field = row.grid.columns[0].field;
+            var overdriveCode = row.entity[column1Field].replace(/\s/g,'');
+            var result = copyToClipboard(overdriveCode);
+          });
+        }
+      };
   
       $scope.searchGrid = function() {
         vm.gridOptions.data = $filter('filter')(gridData , $scope.searchText, undefined);
@@ -54,8 +88,7 @@ angular.module('app', ['ui.grid'])
             });
 
             $scope.opts.data = data;
-            $scope.opts.enableSorting = false;
-            $scope.opts.enableGridMenu = true;
+
             
             $elm.val(null);
           });
