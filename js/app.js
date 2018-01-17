@@ -2,17 +2,16 @@ angular.module('app', ['ui.grid'])
 
 
 
-.controller('MainCtrl', ['$scope', '$filter',
-    function($scope, $filter) {
+.controller('MainCtrl', ['$scope', '$filter', '$window',
+    function($scope, $filter, $window) {
 
       var vm = this;
-      // $scope.opts = '';
       $scope.prompts = txtPrompts;
+      $window.document.title = txtPrompts.tabTitle;
 
       vm.gridOptions = {};
   
       $scope.searchGrid = function() {
-        console.log(gridData.length);
         vm.gridOptions.data = $filter('filter')(gridData , $scope.searchText, undefined);
       };
 
@@ -51,11 +50,9 @@ angular.module('app', ['ui.grid'])
             
             $scope.opts.columnDefs = [];
             headerNames.forEach(function (h) {
-              // debugger;
               $scope.opts.columnDefs.push({ field: h, enableColumnMenu: false });
             });
 
-            
             $scope.opts.data = data;
             $scope.opts.enableSorting = false;
             

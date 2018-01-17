@@ -2,6 +2,7 @@
 <html ng-app="app">
 
   <head>
+    <title>{{prompts.pageTitle}}</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <script src="node_modules/angular//angular.min.js"></script>
     <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
@@ -19,8 +20,10 @@
 
   <body>
     <div ng-controller="MainCtrl as vm">
+          <title>{{prompts.pageTitle}}</title>
+
       
-      
+      <h4 class="alert alert-info">{{prompts.pageTitle}}
       <div class="col-sm-3 col-md-3 pull-right has-feedback">
 
           <div ng-show="showSearch()" class="input-group-sm moveUp">
@@ -31,10 +34,8 @@
                    ng-model="searchText" />
             <i class="form-control-feedback moveUp moveLeft glyphicon glyphicon-filter"></i>                   
           </div>
-      </div>      
-
-      <br />
-      <br />
+      </div> 
+      </h4>     
 
       <div id="grid1" ui-grid="vm.gridOptions" class="grid">
         <div class="grid-msg-overlay" ng-show="!vm.gridOptions.data.length">
@@ -49,6 +50,7 @@
                      fileread="" 
                      opts="vm.gridOptions" 
                      multiple="false" />
+
             </div>
           </div>
         </div>
