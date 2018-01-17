@@ -23,7 +23,7 @@
       
       <div class="col-sm-3 col-md-3 pull-right has-feedback">
 
-          <div ng-show="showSearch" class="input-group-sm moveUp">
+          <div ng-show="showSearch()" class="input-group-sm moveUp">
             <input type="text" 
                    class="form-control" 
                    ng-change="searchGrid()" 
@@ -36,14 +36,19 @@
       <br />
       <br />
 
-
       <div id="grid1" ui-grid="vm.gridOptions" class="grid">
         <div class="grid-msg-overlay" ng-show="!vm.gridOptions.data.length">
           <div class="msg">
-            <div class="center">
-              <span class="muted">Select Spreadsheet File</span>
-              <br />
-              <input type="file" accept=".xls,.xlsx,.ods" fileread="" opts="vm.gridOptions" multiple="false" />
+            <div class="centerButton">
+
+              <label for="files" class="centerButton btn btn-success">{{prompts.selectSpreadsheet}}</label>
+              <input id="files" 
+                     style="visibility:hidden;" 
+                     type="file" 
+                     accept=".xls,.xlsx,.ods" 
+                     fileread="" 
+                     opts="vm.gridOptions" 
+                     multiple="false" />
             </div>
           </div>
         </div>
