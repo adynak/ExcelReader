@@ -1,0 +1,19 @@
+{
+  "name": "excelreader",
+  "version": "1.0.0",
+  "description": "excel file reader",
+  "main": "app.js",
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-ui-grid": "^4.2.0",
+    "bootstrap": "^3.3.7",
+    "ods": "^1.1.7",
+    "xlsx": "^0.11.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "dynak",
+  "license": "ISC"
+}

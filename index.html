@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+  <head>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="node_modules/angular//angular.min.js"></script>
+    <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
+<!-- 
+    <script src="https://cdn.rawgit.com/SheetJS/js-xlsx/v0.8.0/dist/ods.js"></script>
+ -->    
+    <script src="node_modules/angular-ui-grid/ui-grid.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="i18n/en_US.js"></script>
+
+
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.min.css" />
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+  </head>
+
+  <body>
+    <div ng-controller="MainCtrl as vm">
+      
+      
+      <div class="col-sm-3 col-md-3 pull-right has-feedback">
+
+          <div ng-show="showSearch" class="input-group-sm moveUp">
+            <input type="text" 
+                   class="form-control" 
+                   ng-change="searchGrid()" 
+                   placeholder="search"
+                   ng-model="searchText" />
+            <i class="form-control-feedback moveUp moveLeft glyphicon glyphicon-filter"></i>                   
+          </div>
+      </div>      
+
+      <br />
+      <br />
+
+
+      <div id="grid1" ui-grid="vm.gridOptions" class="grid">
+        <div class="grid-msg-overlay" ng-show="!vm.gridOptions.data.length">
+          <div class="msg">
+            <div class="center">
+              <span class="muted">Select Spreadsheet File</span>
+              <br />
+              <input type="file" accept=".xls,.xlsx,.ods" fileread="" opts="vm.gridOptions" multiple="false" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
