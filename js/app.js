@@ -55,6 +55,7 @@ angular.module('app', ['ui.grid'])
 
             $scope.opts.data = data;
             $scope.opts.enableSorting = false;
+            $scope.opts.enableGridMenu = true;
             
             $elm.val(null);
           });
