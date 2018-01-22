@@ -1,64 +1,52 @@
-<!DOCTYPE html>
-<html ng-app="app">
-
+<!doctype html>
+<html lang="en" ng-app="excelReader" ng-cloak>
   <head>
-    <title>{{prompts.pageTitle}}</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
-    <script src="node_modules/angular//angular.min.js"></script>
+    <meta charset="UTF-8">
+
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <link rel="shortcut icon" href="resources/images/map.ico" mime="image/x-icon">
+    <link rel="icon" href="resources/images/map.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.min.css"</link>
+
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
-<!-- 
-    <script src="https://cdn.rawgit.com/SheetJS/js-xlsx/v0.8.0/dist/ods.js"></script>
- -->    
-    <script src="node_modules/angular-ui-grid/ui-grid.min.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular-touch/angular-touch.js"></script> 
+    <script src="node_modules/angular-ui-grid/ui-grid.min.js"></script> 
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/lodash/lodash.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css"/>
     <script src="js/app.js"></script>
+    <script src="js/controllers/nav.js"></script>    
+    <script src="js/controllers/home.js"></script>
+    <script src="js/controllers/viewSheet.js"></script>
+    <script src="js/factory/dataService.js"></script>
+    <script src="js/factory/listService.js"></script>
+    <script src="js/directives/excelReader.js"></script>
     <script src="i18n/en_US.js"></script>
 
 
-    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.min.css" />
-    <link rel="stylesheet" href="css/main.css" type="text/css" />
   </head>
+  <body oncontextmenu="return false;">
 
-  <body>
-    <div ng-controller="MainCtrl as vm">
-          <title>{{prompts.pageTitle}}</title>
-
-      
-      <h4 class="alert alert-info">{{prompts.pageTitle}}
-      <div class="col-sm-3 col-md-3 pull-right has-feedback">
-
-          <div ng-show="showSearch()" class="input-group-sm moveUp">
-            <input type="text" 
-                   class="form-control" 
-                   ng-change="searchGrid()" 
-                   placeholder="search"
-                   ng-model="searchText" />
-            <i class="form-control-feedback moveUp moveLeft glyphicon glyphicon-filter"></i>                   
-          </div>
-      </div> 
-      </h4>     
-
-      <div id="grid1" 
-           ui-grid="vm.gridOptions" 
-           ui-grid-selection
-           class="grid">
-        <div class="grid-msg-overlay" ng-show="!vm.gridOptions.data.length">
-          <div class="msg">
-            <div class="centerButton">
-
-              <label for="files" class="centerButton btn btn-success">{{prompts.selectSpreadsheet}}</label>
-              <input id="files" 
-                     style="visibility:hidden;" 
-                     type="file" 
-                     accept=".xls,.xlsx,.ods" 
-                     fileread="" 
-                     opts="vm.gridOptions" 
-                     multiple="false" />
-
+    <div ng-controller="NavigationController">
+        <nav class="cf" ng-include="'views/nav.html'"></nav>
+        <div>
+            <div ng-view>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
 
+  </body>
 </html>

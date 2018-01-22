@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default sidebar" role="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+        <li>
+          <input style="display: none;" 
+                 id="chooseFile" 
+                 type="file" 
+                 name="files" 
+                 accept=".xls,.xlsx,.ods"                  
+                 filelist-bind>
+          <a href="" onclick="document.getElementById('chooseFile').click(); return false">
+            <span class="txtFile">{{prompts.menuOpenFile}}</span>
+
+            <span style="font-size:16px; padding-right:10px;"
+                  class="pull-left hidden-xs showopacity glyphicon glyphicon-folder-open icon-cart">
+            </span>
+            
+          </a>
+        </li>  
+
+        <li ng-show="menuShowFilename()">
+<!--           <div class="menuItemFileName"><span class="txtFile">{{prompts.file}}: {{excelFilename}} </span>
+            <span style="font-size:16px;" 
+                class="pull-left hidden-xs showopacity glyphicon glyphicon-file">
+            </span>
+          </div>
+ -->       
+        </li>
+
+
+        <li ng-repeat="sheetname in sheetNames">
+          <a href="#/viewSheet/{{$index}}"><span class="txtSheet">{{prompts.sheet}}: {{sheetname}}</span>
+            <span style="font-size:16px;"
+                  class="pull-left hidden-xs showopacity glyphicon glyphicon-th-list icon-blue">
+            </span>
+          </a>
+        </li>     
+
+      </ul>
+    </div>
+  </div>
+</nav>
