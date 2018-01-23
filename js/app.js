@@ -8,7 +8,8 @@ var excelReader = angular.module('excelReader',
             'ngMessages', 
             'ui.grid.grouping', 
             'ui.bootstrap',
-            'ui.grid.selection'
+            'ui.grid.selection',
+            'ui.grid.cellNav'
         ]);
 
 excelReader.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

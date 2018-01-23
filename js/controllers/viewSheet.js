@@ -60,11 +60,17 @@ excelReader.controller('ViewSheetController',
             data: gridData,
             columnDefs: excelData.gridColumns,
             onRegisterApi: function( gridApi ) {  
-                gridApi.selection.on.rowSelectionChanged($scope,function(row){
-                    var column1Field = row.grid.columns[0].field;
-                    var overdriveCode = row.entity[column1Field].replace(/\s/g,'');
-                    var result = copyToClipboard(overdriveCode);
-                });
+              $scope.gridApi = gridApi;
+              gridApi.cellNav.on.navigate($scope,function(newRowCol, oldRowCol){
+                var overdriveCode;
+                var columnName = newRowCol.col.field;
+                if (typeof(newRowCol.row.entity[columnName]) === 'undefined'){
+                  overdriveCode = ' ';
+                } else {
+                  overdriveCode = newRowCol.row.entity[columnName].replace(/^\s+|\s+$/gm,'');
+                }
+                var result = copyToClipboard(overdriveCode);
+              });
             }            
         };
 
