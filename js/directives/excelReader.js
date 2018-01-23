@@ -27,7 +27,11 @@ excelReader.directive("filelistBind", [ 'Data',
                     columns      = XLSX.utils.sheet_to_json( workbook.Sheets[workbook.SheetNames[eX]], { header: 1 })[0];
                     sheetColumns = [];
                     columns.forEach(function (row1) {
-                        sheetColumns.push({ field: row1, enableColumnMenu: false });
+                        sheetColumns.push({ 
+                            name: row1, 
+                            enableColumnMenu: false,
+                            cellTemplate: 'views/tooltip.html'
+                        });
                     });                
 
                     sheets.push(
