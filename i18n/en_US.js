@@ -55,7 +55,8 @@ var txtSideMenu = {
     menuSettings: 'Settings',
     menuFilename: '',
     file: 'File',
-    sheet: 'Sheet'
+    sheet: 'Sheet',
+    sideMenu: 'Menu'
 };
 
 var txtUploadForm = {
