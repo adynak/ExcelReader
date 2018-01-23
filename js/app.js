@@ -16,6 +16,8 @@ excelReader.config(['$routeProvider', '$locationProvider', function($routeProvid
     
     $locationProvider.hashPrefix(''); 
 
+    document.title = txtNavigation.brandName;
+
     $routeProvider.
     when('/home', {
         templateUrl: 'views/home.html',

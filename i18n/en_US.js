@@ -39,7 +39,7 @@ var txtSettings = {
 };
 
 var txtNavigation = {
-    brandName: 'Excel Overdrive',
+    brandName: 'Sales Overdrive',
     btnLogin: 'Login',
     btnRegister: 'Register',
     btnLogout: 'Logout',
