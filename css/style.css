@@ -22,10 +22,6 @@
   color:#3879D9;
 }
 
-.login {
-  color:#3879D9;
-}
-
 .fieldset h1 span {
   display: inline;
   border: 1px solid #ddd;
@@ -88,7 +84,9 @@ textarea {
   .sidebar-nav .navbar li a {
     padding-top: 12px;
     padding-bottom: 12px;
+/*    border-bottom: 1px solid #000000;*/
   }
+
 }
 
 @media (min-width: 1330px) {
@@ -214,26 +212,6 @@ body  {
   padding: 15px;
   background-color: #cccccc;
 }
-
-/* enable absolute positioning */
-.inner-addon {
-  position: relative;
-}
-
-/* style glyph */
-.inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  pointer-events: none;
-}
-
-/* align glyph */
-.left-addon .glyphicon  { left:  0px;}
-.right-addon .glyphicon { right: 0px;}
-
-/* add padding  */
-.left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
 
 .moveLeft {
   margin-right : 10px;
