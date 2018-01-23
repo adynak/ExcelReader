@@ -31,7 +31,7 @@ excelReader.controller('HomeController',
                 $scope.excelFilename = spreadsheet.filename;
                 $scope.sheetNames    = spreadsheet.sheetNames;
                 showFilename = true;
-                $scope.prompts.menuOpenFile = txtSideMenu.file + ' ' + spreadsheet.filename;
+                $scope.prompts.menuOpenFile = txtSideMenu.file + ': ' + spreadsheet.filename;
             }
             return showFilename;
         }
