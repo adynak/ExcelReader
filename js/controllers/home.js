@@ -12,16 +12,6 @@ excelReader.controller('HomeController',
 
         $scope.prompts = txtSideMenu;
         var spreadsheet;
-        $scope.applyThisClass = function(memberProfile) {
-            return "";
-            if (typeof(memberProfile) !== 'undefined'){
-                if (memberProfile.member_type) {
-                    return "";
-                } else {
-                    return "sr-only";
-                }
-            }
-        }
 
         $scope.menuShowFilename = function() {
             var spreadsheet = Data.getExcel();

@@ -23,39 +23,34 @@
                      accept=".xls,.xlsx,.ods"                  
                      filelist-bind>
               <a href="" onclick="document.getElementById('chooseFile').click(); return false">
-                <span class="txtFile">{{prompts.menuOpenFile}}</span>
-                
-<!--                 <span style="font-size:16px; padding-right:10px;"
-                      class="pull-left hidden-xs showopacity glyphicon glyphicon-folder-open icon-cart">
+                <span class="txtFile">
+                  {{prompts.menuOpenFile}}
                 </span>
- -->                
               </a>
-            </li>              
+            </li>   
 
             <li ng-show="menuShowFilename()">
-<!--           <div class="menuItemFileName"><span class="txtFile">{{prompts.file}}: {{excelFilename}} </span>
-                <span style="font-size:16px;" 
-                  class="pull-left hidden-xs showopacity glyphicon glyphicon-file">
-                </span>
-                </div>
- -->       
+<!-- 
+  until you can find a better home for this, it stays
+  the function is important 
+-->
             </li>
 
-        <li ng-repeat="sheetname in sheetNames">
-          <a href="#/viewSheet/{{$index}}"><span class="txtSheet">{{prompts.sheet}}: {{sheetname}}</span>
+            <li ng-repeat="sheetname in sheetNames">
+              <a href="#/viewSheet/{{$index}}">
+                <span class="txtSheet">
+                  {{prompts.sheet}}: {{sheetname}}
+                </span>
+              </a>
+            </li>    
+                  
+          </ul>
 
-<!--             <span style="font-size:16px;"
-                  class="pull-left hidden-xs showopacity glyphicon glyphicon-th-list icon-blue">
-            </span>
- -->            
-          </a>
-        </li>    
-                  </ul>
         </div>
       </div>
     </div>
   </div>
   <div class="col-sm-9">
-
+<!-- you might want something here, not sure what, but maybe -->
   </div>
 </div>
