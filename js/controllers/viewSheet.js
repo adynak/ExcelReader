@@ -7,8 +7,9 @@ excelReader.controller('ViewSheetController',
         '$window', 
         '$routeParams',
         '$filter',
+        'excelReaderService',
 
-    function($scope, ListServices, $uibModal, Data, $window, $routeParams, $filter) {
+    function($scope, ListServices, $uibModal, Data, $window, $routeParams, $filter, excelReaderService) {
 
 
         $scope.prompts = txtCommon;
@@ -27,27 +28,6 @@ excelReader.controller('ViewSheetController',
         $scope.searchGrid = function() {
             $scope.gridOptions.data = $filter('filter')(excelData.gridData , $scope.searchText, undefined);
         };
-
-        function copyToClipboard(text) {
-          if (window.clipboardData && window.clipboardData.setData) {
-              // IE specific code path to prevent textarea being shown while dialog is visible.
-              return clipboardData.setData("Text", text);
-          } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-              var textarea = document.createElement("textarea");
-              textarea.textContent = text;
-              textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
-              document.body.appendChild(textarea);
-              textarea.select();
-              try {
-                  return document.execCommand("copy"); // Security exception may be thrown by some browsers.
-              } catch (ex) {
-                  console.warn("Copy to clipboard failed.", ex);
-                  return false;
-              } finally {
-                  document.body.removeChild(textarea);
-              }
-          }
-      }
 
         $scope.gridOptions = {
             enableGridMenu: true,
@@ -69,7 +49,7 @@ excelReader.controller('ViewSheetController',
                 } else {
                   overdriveCode = newRowCol.row.entity[columnName].replace(/^\s+|\s+$/gm,'');
                 }
-                var result = copyToClipboard(overdriveCode);
+                var result = excelReaderService.copyToClipboard(overdriveCode);
               });
             }            
         };
