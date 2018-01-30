@@ -24,6 +24,15 @@ excelReader.directive("filelistBind", [ 'Data',
                 for (var eX = 0 ; eX < excelSheetCount ; eX++){
                     sheetName    = workbook.SheetNames[eX];
                     sheetData    = XLSX.utils.sheet_to_json( workbook.Sheets[workbook.SheetNames[eX]]);
+
+                    if (eX = 1){
+                        text = JSON.stringify(sheetData);
+                        var filename = 'availableFields';
+                        var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
+                        saveAs(blob, filename+".json");
+                    }
+
+
                     columns      = XLSX.utils.sheet_to_json( workbook.Sheets[workbook.SheetNames[eX]], { header: 1 })[0];
                     sheetColumns = [];
                     columns.forEach(function (row1) {
