@@ -25,13 +25,14 @@ excelReader.directive("filelistBind", [ 'Data',
                     sheetName    = workbook.SheetNames[eX];
                     sheetData    = XLSX.utils.sheet_to_json( workbook.Sheets[workbook.SheetNames[eX]]);
 
-                    if (eX = 1){
-                        text = JSON.stringify(sheetData);
-                        var filename = 'availableFields';
-                        var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
-                        saveAs(blob, filename+".json");
+                    if (eX == 1){
+                        saveText = JSON.stringify(sheetData);
+                        saveText = saveText.replace(/\\t/g, "");
+                        saveText = saveText.replace(/Truck Sales Overdrive Code/g, "name");
+                        var saveFilename = 'availableFields';
+                        var saveBlob = new Blob([saveText], {type: "text/plain;charset=utf-8"});
+                        saveAs(saveBlob, saveFilename+".json");
                     }
-
 
                     columns      = XLSX.utils.sheet_to_json( workbook.Sheets[workbook.SheetNames[eX]], { header: 1 })[0];
                     sheetColumns = [];
